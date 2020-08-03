@@ -106,10 +106,10 @@ namespace JurisUtilityBase
 
             if (cashExps != null) // did we get any cash exps?
             {
-                incomeAcct = getChtSysNbr("11300-0000"); //does this income account exist?
+                incomeAcct = getChtSysNbr("0150-000"); //does this income account exist?
                 if (!incomeAcct .Equals("None"))
                 {
-                    adjAccount = getChtSysNbr("26500-1000");
+                    adjAccount = getChtSysNbr("0990-000");
                     if (!incomeAcct.Equals("None")) //does this adj account exist?
                     {
                         processAccts(cashExps, incomeAcct, "I"); //income
@@ -118,10 +118,10 @@ namespace JurisUtilityBase
                         MessageBox.Show("The process is complete", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                     else
-                        MessageBox.Show("GL Account 26500-1000 does not exist in this data", "Account Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("GL Account 0990-000 does not exist in this data", "Account Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("GL Account 11300-0000 does not exist in this data", "Account Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("GL Account 0150-000 does not exist in this data", "Account Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("There are no cash expenses in this dataset", "Cash expense Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -173,7 +173,7 @@ namespace JurisUtilityBase
                 }
                 else
                 {
-                    sql = "insert into ExpCodeGLAcct (ECGAExpCode,ECGAType,ECGAAcct) values ('" + code + "', '" + IAFlag + "', " + acct;
+                    sql = "insert into ExpCodeGLAcct (ECGAExpCode,ECGAType,ECGAAcct) values ('" + code + "', '" + IAFlag + "', " + acct + ")";
                     _jurisUtility.ExecuteNonQuery(0, sql);
                 }
             }
